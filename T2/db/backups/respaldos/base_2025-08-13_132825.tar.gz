@@ -1,0 +1,2 @@
+pg_basebackup: error: cannot stream write-ahead logs in tar mode to stdout
+pg_basebackup: hint: Try "pg_basebackup --help" for more information.

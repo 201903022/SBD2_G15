@@ -1,5 +1,5 @@
 # SBD2_G15
 
-## Tarea 2
+## Backups
 
-Backups
+[Ir a la documentacion de backups](./T2/db/backups/readme.md)
