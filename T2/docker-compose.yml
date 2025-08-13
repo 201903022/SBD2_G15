@@ -1,0 +1,28 @@
+services:
+  myDB:
+    image: postgres:15.3
+    container_name: my-database-t2
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=grupo15
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=bases2-db-t2
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+      - ./wal-archive:/var/lib/postgresql/wal_archive
+  
+  pdAdmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmint2
+    restart: always
+    depends_on:
+      - myDB
+    ports:
+      - 8080:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=grupo15@google.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
