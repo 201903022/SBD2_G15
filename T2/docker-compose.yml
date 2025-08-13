@@ -12,6 +12,13 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
       - ./wal-archive:/var/lib/postgresql/wal_archive
+    # Activa WAL archiving
+    command: >
+      postgres
+      -c wal_level=replica
+      -c archive_mode=on
+      -c archive_timeout=60s
+      -c archive_command='test ! -f /var/lib/postgresql/wal_archive/%f && cp %p /var/lib/postgresql/wal_archive/%f'
   
   pdAdmin:
     image: dpage/pgadmin4
